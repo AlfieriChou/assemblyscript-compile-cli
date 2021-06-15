@@ -5,6 +5,10 @@ const path = require('path')
 const fs = require('fs')
 
 const rootPath = process.cwd()
+let args = ['-o']
+if (process.argv.length > 2) {
+  args = process.argv.slice(2)
+}
 
 const {
   MODEL_PATH,
@@ -13,9 +17,9 @@ const {
 
 assert(MODEL_PATH, 'MODEL_PATH is required')
 
-const ascPath = `${rootPath}/node_modules/.bin/asc`
+const ascBinPath = `${rootPath}/node_modules/.bin/asc`
 
-if (!fs.existsSync(ascPath)) {
+if (!fs.existsSync(ascBinPath)) {
   shell.echo(`Error: please install assemblyscript!`)
   shell.exit(1)
 }
@@ -26,7 +30,7 @@ models.reduce(async (promise, asPath, index) => {
   await promise
   const filename = path.parse(asPath).name
   const runCommandRet = shell.exec(`
-    ${ascPath} ${asPath} -o ${COMPILE_PATH}/${filename}.wasm
+    ${ascBinPath} ${asPath} ${args.join(' ')} ${COMPILE_PATH}/${filename}.wasm
   `)
   if (runCommandRet.code !== 0) {
     shell.echo(`Error: ${filename} compile failed!`)
