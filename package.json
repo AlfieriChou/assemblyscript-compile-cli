@@ -1,0 +1,30 @@
+{
+  "name": "assemblyscript-compile-cli",
+  "version": "0.0.1",
+  "description": "assemblyscript file compile to wasm file.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfieriChou/assemblyscript-compile-cli.git"
+  },
+  "keywords": [
+    "assemblyscript"
+  ],
+  "author": "AlfieriChou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlfieriChou/assemblyscript-compile-cli/issues"
+  },
+  "homepage": "https://github.com/AlfieriChou/assemblyscript-compile-cli#readme",
+  "dependencies": {
+    "assemblyscript": "^0.19.2",
+    "read-dir-filenames": "^1.0.6",
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "standard-version": "^9.3.0"
+  }
+}
