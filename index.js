@@ -5,9 +5,9 @@ const path = require('path')
 const fs = require('fs')
 
 const rootPath = process.cwd()
-let args = ['-o']
+const args = []
 if (process.argv.length > 2) {
-  args = process.argv.slice(2)
+  args.push(...process.argv.slice(2))
 }
 
 const {
@@ -30,7 +30,7 @@ models.reduce(async (promise, asPath, index) => {
   await promise
   const filename = path.parse(asPath).name
   const runCommandRet = shell.exec(`
-    ${ascBinPath} ${asPath} ${args.join(' ')} ${COMPILE_PATH}/${filename}.wasm
+    ${ascBinPath} ${asPath} -b ${COMPILE_PATH}/${filename}.wasm -t ${COMPILE_PATH}/${filename}.wat ${args.join(' ')}
   `)
   if (runCommandRet.code !== 0) {
     shell.echo(`Error: ${filename} compile failed!`)
