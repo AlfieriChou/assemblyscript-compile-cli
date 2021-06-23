@@ -3,6 +3,8 @@ assemblyscript to wasm cli
 
 ## Usage
 
+[doc](https://www.assemblyscript.org/compiler.html#command-line-options)
+
 ### tsconfig
 
 ```json
